@@ -1,0 +1,20 @@
+Import('env')
+Import('board')
+#Script for Src
+excludes = []
+if board['MCU']=='STM32H743xx':
+    excludes.append('*stm32f7*.c')
+    excludes.append('*stm32f4*.c')
+    excludes.append('fatfs_platform.c')
+if board['MCU']=='STM32F767xx':
+    excludes.append('*stm32h7*.c')
+    excludes.append('*stm32f4*.c')
+
+# Glob(pattern, [ondisk, source, strings, exclude]) , env.Glob(pattern, [ondisk, source, strings, exclude]) 
+# The exclude argument may be set to a pattern or a list of patterns
+#
+objs = []
+objs.append(env.Object(Glob('*.c', exclude=excludes)))
+objs.append(env.Object(Glob('*.cpp')))
+#objs.append(env.Object(Glob('*.S')))
+Return('objs')

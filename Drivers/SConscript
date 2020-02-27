@@ -1,0 +1,6 @@
+Import('env')
+Import('board')
+#Script for Drivers
+objs = []
+objs.append(env.Object(Glob(board['STM_HAL_DIR']+'/Src/*.c')))
+Return('objs')

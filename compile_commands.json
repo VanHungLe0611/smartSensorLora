@@ -1,28 +1,18 @@
 [
     {
-        "command": "arm-none-eabi-gcc -o build/debug/Src/dwt_stm32_delay.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Src/dwt_stm32_delay.c",
+        "command": "arm-none-eabi-gcc -o build/debug/SEGGER/RTT/SEGGER_RTT.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT SEGGER/RTT/SEGGER_RTT.c",
         "directory": "/home/hung/Dokumente/smartSensorLora",
-        "file": "Src/dwt_stm32_delay.c"
+        "file": "SEGGER/RTT/SEGGER_RTT.c"
     },
     {
-        "command": "arm-none-eabi-gcc -o build/debug/Src/main.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Src/main.c",
+        "command": "arm-none-eabi-gcc -o build/debug/SEGGER/RTT/SEGGER_RTT_printf.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT SEGGER/RTT/SEGGER_RTT_printf.c",
         "directory": "/home/hung/Dokumente/smartSensorLora",
-        "file": "Src/main.c"
+        "file": "SEGGER/RTT/SEGGER_RTT_printf.c"
     },
     {
-        "command": "arm-none-eabi-gcc -o build/debug/Src/stm32l4xx_hal_msp.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Src/stm32l4xx_hal_msp.c",
+        "command": "arm-none-eabi-gcc -o build/debug/SEGGER/HardFault/SEGGER_HardFault_Handler.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT SEGGER/HardFault/SEGGER_HardFault_Handler.c",
         "directory": "/home/hung/Dokumente/smartSensorLora",
-        "file": "Src/stm32l4xx_hal_msp.c"
-    },
-    {
-        "command": "arm-none-eabi-gcc -o build/debug/Src/stm32l4xx_it.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Src/stm32l4xx_it.c",
-        "directory": "/home/hung/Dokumente/smartSensorLora",
-        "file": "Src/stm32l4xx_it.c"
-    },
-    {
-        "command": "arm-none-eabi-gcc -o build/debug/Src/system_stm32l4xx.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Src/system_stm32l4xx.c",
-        "directory": "/home/hung/Dokumente/smartSensorLora",
-        "file": "Src/system_stm32l4xx.c"
+        "file": "SEGGER/HardFault/SEGGER_HardFault_Handler.c"
     },
     {
         "command": "arm-none-eabi-gcc -o build/debug/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c",
@@ -130,18 +120,123 @@
         "file": "Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c"
     },
     {
-        "command": "arm-none-eabi-gcc -o build/debug/SEGGER/RTT/SEGGER_RTT.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT SEGGER/RTT/SEGGER_RTT.c",
+        "command": "arm-none-eabi-gcc -o build/debug/Src/VL53L1X_api.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Src/VL53L1X_api.c",
         "directory": "/home/hung/Dokumente/smartSensorLora",
-        "file": "SEGGER/RTT/SEGGER_RTT.c"
+        "file": "Src/VL53L1X_api.c"
     },
     {
-        "command": "arm-none-eabi-gcc -o build/debug/SEGGER/RTT/SEGGER_RTT_printf.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT SEGGER/RTT/SEGGER_RTT_printf.c",
+        "command": "arm-none-eabi-gcc -o build/debug/Src/VL53L1X_calibration.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Src/VL53L1X_calibration.c",
         "directory": "/home/hung/Dokumente/smartSensorLora",
-        "file": "SEGGER/RTT/SEGGER_RTT_printf.c"
+        "file": "Src/VL53L1X_calibration.c"
     },
     {
-        "command": "arm-none-eabi-gcc -o build/debug/SEGGER/HardFault/SEGGER_HardFault_Handler.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT SEGGER/HardFault/SEGGER_HardFault_Handler.c",
+        "command": "arm-none-eabi-gcc -o build/debug/Src/X-NUCLEO-53L1A1.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Src/X-NUCLEO-53L1A1.c",
         "directory": "/home/hung/Dokumente/smartSensorLora",
-        "file": "SEGGER/HardFault/SEGGER_HardFault_Handler.c"
+        "file": "Src/X-NUCLEO-53L1A1.c"
+    },
+    {
+        "command": "arm-none-eabi-gcc -o build/debug/Src/dwt_stm32_delay.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Src/dwt_stm32_delay.c",
+        "directory": "/home/hung/Dokumente/smartSensorLora",
+        "file": "Src/dwt_stm32_delay.c"
+    },
+    {
+        "command": "arm-none-eabi-gcc -o build/debug/Src/i2c-board.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Src/i2c-board.c",
+        "directory": "/home/hung/Dokumente/smartSensorLora",
+        "file": "Src/i2c-board.c"
+    },
+    {
+        "command": "arm-none-eabi-gcc -o build/debug/Src/i2c.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Src/i2c.c",
+        "directory": "/home/hung/Dokumente/smartSensorLora",
+        "file": "Src/i2c.c"
+    },
+    {
+        "command": "arm-none-eabi-gcc -o build/debug/Src/main.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Src/main.c",
+        "directory": "/home/hung/Dokumente/smartSensorLora",
+        "file": "Src/main.c"
+    },
+    {
+        "command": "arm-none-eabi-gcc -o build/debug/Src/stm32l4xx_hal_msp.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Src/stm32l4xx_hal_msp.c",
+        "directory": "/home/hung/Dokumente/smartSensorLora",
+        "file": "Src/stm32l4xx_hal_msp.c"
+    },
+    {
+        "command": "arm-none-eabi-gcc -o build/debug/Src/stm32l4xx_it.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Src/stm32l4xx_it.c",
+        "directory": "/home/hung/Dokumente/smartSensorLora",
+        "file": "Src/stm32l4xx_it.c"
+    },
+    {
+        "command": "arm-none-eabi-gcc -o build/debug/Src/system_stm32l4xx.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Src/system_stm32l4xx.c",
+        "directory": "/home/hung/Dokumente/smartSensorLora",
+        "file": "Src/system_stm32l4xx.c"
+    },
+    {
+        "command": "arm-none-eabi-gcc -o build/debug/Src/tim.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Src/tim.c",
+        "directory": "/home/hung/Dokumente/smartSensorLora",
+        "file": "Src/tim.c"
+    },
+    {
+        "command": "arm-none-eabi-gcc -o build/debug/Src/vl53l1_api.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Src/vl53l1_api.c",
+        "directory": "/home/hung/Dokumente/smartSensorLora",
+        "file": "Src/vl53l1_api.c"
+    },
+    {
+        "command": "arm-none-eabi-gcc -o build/debug/Src/vl53l1_api_calibration.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Src/vl53l1_api_calibration.c",
+        "directory": "/home/hung/Dokumente/smartSensorLora",
+        "file": "Src/vl53l1_api_calibration.c"
+    },
+    {
+        "command": "arm-none-eabi-gcc -o build/debug/Src/vl53l1_api_core.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Src/vl53l1_api_core.c",
+        "directory": "/home/hung/Dokumente/smartSensorLora",
+        "file": "Src/vl53l1_api_core.c"
+    },
+    {
+        "command": "arm-none-eabi-gcc -o build/debug/Src/vl53l1_api_debug.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Src/vl53l1_api_debug.c",
+        "directory": "/home/hung/Dokumente/smartSensorLora",
+        "file": "Src/vl53l1_api_debug.c"
+    },
+    {
+        "command": "arm-none-eabi-gcc -o build/debug/Src/vl53l1_api_preset_modes.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Src/vl53l1_api_preset_modes.c",
+        "directory": "/home/hung/Dokumente/smartSensorLora",
+        "file": "Src/vl53l1_api_preset_modes.c"
+    },
+    {
+        "command": "arm-none-eabi-gcc -o build/debug/Src/vl53l1_api_strings.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Src/vl53l1_api_strings.c",
+        "directory": "/home/hung/Dokumente/smartSensorLora",
+        "file": "Src/vl53l1_api_strings.c"
+    },
+    {
+        "command": "arm-none-eabi-gcc -o build/debug/Src/vl53l1_core.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Src/vl53l1_core.c",
+        "directory": "/home/hung/Dokumente/smartSensorLora",
+        "file": "Src/vl53l1_core.c"
+    },
+    {
+        "command": "arm-none-eabi-gcc -o build/debug/Src/vl53l1_core_support.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Src/vl53l1_core_support.c",
+        "directory": "/home/hung/Dokumente/smartSensorLora",
+        "file": "Src/vl53l1_core_support.c"
+    },
+    {
+        "command": "arm-none-eabi-gcc -o build/debug/Src/vl53l1_error_strings.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Src/vl53l1_error_strings.c",
+        "directory": "/home/hung/Dokumente/smartSensorLora",
+        "file": "Src/vl53l1_error_strings.c"
+    },
+    {
+        "command": "arm-none-eabi-gcc -o build/debug/Src/vl53l1_platform.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Src/vl53l1_platform.c",
+        "directory": "/home/hung/Dokumente/smartSensorLora",
+        "file": "Src/vl53l1_platform.c"
+    },
+    {
+        "command": "arm-none-eabi-gcc -o build/debug/Src/vl53l1_register_funcs.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Src/vl53l1_register_funcs.c",
+        "directory": "/home/hung/Dokumente/smartSensorLora",
+        "file": "Src/vl53l1_register_funcs.c"
+    },
+    {
+        "command": "arm-none-eabi-gcc -o build/debug/Src/vl53l1_silicon_core.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Src/vl53l1_silicon_core.c",
+        "directory": "/home/hung/Dokumente/smartSensorLora",
+        "file": "Src/vl53l1_silicon_core.c"
+    },
+    {
+        "command": "arm-none-eabi-gcc -o build/debug/Src/vl53l1_wait.o -c -std=gnu11 -g3 -mcpu=cortex-m4 -mthumb -O0 -mno-unaligned-access -fno-move-loop-invariants -fsigned-char -ffunction-sections -fdata-sections -fmessage-length=0 -mfpu=fpv5-sp-d16 -mfloat-abi=softfp -w -Wextra -DDEBUG -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DTRACE -DUSE_HAL_DRIVER -DSTM32L496xx -DHSE_VALUE=8000000 -DUSE_FULL_LL_DRIVER -IDrivers/CMSIS/Include -IDrivers/CMSIS/Device/ST/STM32L4xx/Include -IDrivers/STM32L4xx_HAL_Driver/Inc -IDrivers/STM32L4xx_HAL_Driver/Inc/Legacy -IInc -ISEGGER/RTT Src/vl53l1_wait.c",
+        "directory": "/home/hung/Dokumente/smartSensorLora",
+        "file": "Src/vl53l1_wait.c"
     }
 ]

@@ -24,6 +24,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "dwt_stm32_delay.h"
+#include "time.h"
 
 /* USER CODE END Includes */
 
@@ -34,6 +35,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define SensorAddress 0xE0
+#define RangeCommand 0x51
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -52,6 +55,9 @@ UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
+uint16_t dev = 0x52;
+int status = 0;
+volatile int IntCount;
 
 /* USER CODE END PV */
 
@@ -66,7 +72,10 @@ static void MX_USART1_UART_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_USB_OTG_FS_USB_Init(void);
 /* USER CODE BEGIN PFP */
-uint32_t test_sensor_y401(void);
+uint32_t test_sensor_rcw001(void);
+uint32_t test_sensor_us100(void);
+uint32_t test_sensor_us42v2(void);
+uint32_t OnMeasureTimerEvent(void *context);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -80,6 +89,17 @@ uint32_t test_sensor_y401(void);
  */
 int main(void) {
 	/* USER CODE BEGIN 1 */
+
+	uint8_t byteData, sensorState = 0;
+	uint16_t wordData;
+	uint8_t ToFSensor = 1; // 0=Left, 1=Center(default), 2=Right
+	uint16_t Distance;
+	uint16_t SignalRate;
+	uint16_t AmbientRate;
+	uint16_t SpadNum;
+	uint8_t RangeStatus;
+	uint8_t dataReady;
+	uint8_t distanceMode;
 
 	/* USER CODE END 1 */
 
@@ -109,7 +129,36 @@ int main(void) {
 	MX_USART2_UART_Init();
 	MX_USB_OTG_FS_USB_Init();
 	/* USER CODE BEGIN 2 */
-	uint32_t distance;
+	SEGGER_RTT_Init();
+	XNUCLEO53L1A1_Init();
+	uint32_t distance_rcw001;
+	uint32_t distance_us100;
+	uint32_t distance_us42v2;
+
+	/* Those basic I2C read functions can be used to check youDWT_Delay_Init();r own I2C functions */
+	status = VL53L1_RdByte(dev, 0x010F, &byteData);
+	SEGGER_RTT_printf(0, "VL53L1X Model_ID: %X\n", byteData);
+	status = VL53L1_RdByte(dev, 0x0110, &byteData);
+	SEGGER_RTT_printf(0, "VL53L1X Module_Type: %X\n", byteData);
+	status = VL53L1_RdWord(dev, 0x010F, &wordData);
+	SEGGER_RTT_printf(0, "VL53L1X: %X\n", wordData);
+	while (sensorState == 0) {
+		status = VL53L1X_BootState(dev, &sensorState);
+		HAL_Delay(2);
+	}
+	SEGGER_RTT_printf(0, "Chip booted\n");
+	/* This function must to be called to initialize the sensor with the default setting  */
+	status = VL53L1X_SensorInit(dev);
+	/* Optional functions to be used to change the main ranging parameters according the application requirements to get the best ranging performances */
+	status = VL53L1X_SetDistanceMode(dev, 2); /* 1=short, 2=long */
+	status = VL53L1X_SetTimingBudgetInMs(dev, 100); /* in ms possible values [20, 50, 100, 200, 500] */
+	status = VL53L1X_SetInterMeasurementInMs(dev, 100); /* in ms, IM must be > = TB */
+	//  status = VL53L1X_SetOffset(dev,20); /* offset compensation in mm */
+	//  status = VL53L1X_SetROI(dev, 16, 16); /* minimum ROI 4,4 */
+	//	status = VL53L1X_CalibrateOffset(dev, 140, &offset); /* may take few second to perform the offset cal*/
+	//	status = VL53L1X_CalibrateXtalk(dev, 1000, &xtalk); /* may take few second to perform the xtalk cal */
+	SEGGER_RTT_printf(0, "VL53L1X Ultra Lite Driver Example running ...\n");
+	status = VL53L1X_StartRanging(dev); /* This function has to be called to enable the ranging */
 
 	/* USER CODE END 2 */
 
@@ -119,7 +168,29 @@ int main(void) {
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */
-		distance = test_sensor_y401();
+		while (dataReady == 0) {
+			status = VL53L1X_CheckForDataReady(dev, &dataReady);
+			HAL_Delay(2);
+		}
+		dataReady = 0;
+		//		status = VL53L1X_GetRangeStatus(dev, &RangeStatus);
+		status = VL53L1X_GetDistance(dev, &Distance);
+		//		status = VL53L1X_GetSignalRate(dev, &SignalRate);
+		//		status = VL53L1X_GetAmbientRate(dev, &AmbientRate);
+		//		status = VL53L1X_GetSpadNb(dev, &SpadNum);
+		//		status = VL53L1X_SetDistanceMode(dev, distanceMode);
+		//		status = VL53L1X_ClearInterrupt(dev); /* clear interrupt has to be called to enable next interrupt*/
+		//		SEGGER_RTT_printf(0,
+		//				"RangeStatus =%u, Distance= %u, SignalRate = %u, AmbientRate = %u, SpadNum = %u, DistanceMode = %u\n",
+		//				RangeStatus, Distance, SignalRate, AmbientRate, SpadNum,
+		//				distanceMode);
+//		distance_us100 = test_sensor_us100();
+		distance_rcw001 = test_sensor_rcw001();
+
+		distance_us42v2 = OnMeasureTimerEvent("Hung");
+		SEGGER_RTT_printf(0,
+				"Distance from VL53L1X is : %u , Distance from RCW001 is : %u , Distance from US-100 is : %u , Distance from US-42V2 is : %u\n",
+				Distance, distance_rcw001, distance_us100, distance_us42v2);
 		HAL_Delay(200);
 	}
 	/* USER CODE END 3 */
@@ -462,29 +533,25 @@ static void MX_GPIO_Init(void) {
 
 	/*Configure GPIO pin Output Level */
 	HAL_GPIO_WritePin(GPIOC,
-			GPIO9_Pin | LORA_RST_Pin | LORA_DIO5_Pin | GPIO0_Pin | GPIO1_Pin
-					| GPIO2_Pin | GPIO3_Pin | GPIO_PIN_10 | GPIO5_Pin,
-			GPIO_PIN_RESET);
+			LORA_RST_Pin | LORA_DIO5_Pin | GPIO0_Pin | GPIO1_Pin | GPIO2_Pin
+					| GPIO3_Pin | GPIO_PIN_10, GPIO_PIN_RESET);
 
 	/*Configure GPIO pin Output Level */
 	HAL_GPIO_WritePin(GPIOB,
 			LORA_DIO3_Pin | LORA_DIO4_Pin | LORA_DIO0_Pin | LORA_DIO1_Pin
-					| LORA_DIO2_Pin | GPIO7_Pin | GPIO8_Pin, GPIO_PIN_RESET);
+					| LORA_DIO2_Pin | GPIO8_Pin, GPIO_PIN_RESET);
 
 	/*Configure GPIO pin Output Level */
-	HAL_GPIO_WritePin(GPIOA, SUP_EN_Pin | GPIO4_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOA, SUP_EN_Pin | US_Trigger_Pin, GPIO_PIN_RESET);
 
 	/*Configure GPIO pin Output Level */
-	HAL_GPIO_WritePin(GPIO6_GPIO_Port, GPIO6_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(US42V2_Trigger_GPIO_Port, US42V2_Trigger_Pin,
+			GPIO_PIN_RESET);
 
-	/*Configure GPIO pins : GPIO9_Pin LORA_RST_Pin LORA_DIO5_Pin GPIO0_Pin
-	 GPIO1_Pin GPIO2_Pin GPIO3_Pin PC10
-	 GPIO5_Pin */
-	GPIO_InitStruct.Pin = GPIO9_Pin | LORA_RST_Pin | LORA_DIO5_Pin | GPIO0_Pin
-			| GPIO1_Pin | GPIO2_Pin | GPIO3_Pin | GPIO_PIN_10 | GPIO5_Pin;
-	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+	/*Configure GPIO pins : PC13 PC11 US_Echo_Pin */
+	GPIO_InitStruct.Pin = GPIO_PIN_13 | GPIO_PIN_11 | US_Echo_Pin;
+	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
 	GPIO_InitStruct.Pull = GPIO_NOPULL;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
 	HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
 	/*Configure GPIO pins : ACC_INT_1_Pin ACC_INT_2_Pin */
@@ -493,17 +560,26 @@ static void MX_GPIO_Init(void) {
 	GPIO_InitStruct.Pull = GPIO_NOPULL;
 	HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
+	/*Configure GPIO pins : LORA_RST_Pin LORA_DIO5_Pin GPIO0_Pin GPIO1_Pin
+	 GPIO2_Pin GPIO3_Pin PC10 */
+	GPIO_InitStruct.Pin = LORA_RST_Pin | LORA_DIO5_Pin | GPIO0_Pin | GPIO1_Pin
+			| GPIO2_Pin | GPIO3_Pin | GPIO_PIN_10;
+	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+	HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
 	/*Configure GPIO pins : LORA_DIO3_Pin LORA_DIO4_Pin LORA_DIO0_Pin LORA_DIO1_Pin
-	 LORA_DIO2_Pin GPIO7_Pin GPIO8_Pin */
+	 LORA_DIO2_Pin GPIO8_Pin */
 	GPIO_InitStruct.Pin = LORA_DIO3_Pin | LORA_DIO4_Pin | LORA_DIO0_Pin
-			| LORA_DIO1_Pin | LORA_DIO2_Pin | GPIO7_Pin | GPIO8_Pin;
+			| LORA_DIO1_Pin | LORA_DIO2_Pin | GPIO8_Pin;
 	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
 	GPIO_InitStruct.Pull = GPIO_NOPULL;
 	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
 	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-	/*Configure GPIO pins : SUP_EN_Pin GPIO4_Pin */
-	GPIO_InitStruct.Pin = SUP_EN_Pin | GPIO4_Pin;
+	/*Configure GPIO pins : SUP_EN_Pin US_Trigger_Pin */
+	GPIO_InitStruct.Pin = SUP_EN_Pin | US_Trigger_Pin;
 	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
 	GPIO_InitStruct.Pull = GPIO_NOPULL;
 	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -523,23 +599,23 @@ static void MX_GPIO_Init(void) {
 	GPIO_InitStruct.Alternate = GPIO_AF10_OTG_FS;
 	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-	/*Configure GPIO pin : PC11 */
-	GPIO_InitStruct.Pin = GPIO_PIN_11;
-	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-	GPIO_InitStruct.Pull = GPIO_NOPULL;
-	HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-
-	/*Configure GPIO pin : GPIO6_Pin */
-	GPIO_InitStruct.Pin = GPIO6_Pin;
+	/*Configure GPIO pin : US42V2_Trigger_Pin */
+	GPIO_InitStruct.Pin = US42V2_Trigger_Pin;
 	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
 	GPIO_InitStruct.Pull = GPIO_NOPULL;
 	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-	HAL_GPIO_Init(GPIO6_GPIO_Port, &GPIO_InitStruct);
+	HAL_GPIO_Init(US42V2_Trigger_GPIO_Port, &GPIO_InitStruct);
+
+	/*Configure GPIO pin : US42V2_Echo_Pin */
+	GPIO_InitStruct.Pin = US42V2_Echo_Pin;
+	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	HAL_GPIO_Init(US42V2_Echo_GPIO_Port, &GPIO_InitStruct);
 
 }
 
 /* USER CODE BEGIN 4 */
-uint32_t test_sensor_y401(void) {
+uint32_t test_sensor_rcw001(void) {
 	uint32_t local_time = 0;
 
 //	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET); // pull the TRIG pin HIGH
@@ -559,6 +635,74 @@ uint32_t test_sensor_y401(void) {
 		DWT_Delay_us(1);
 	}
 	return local_time * 0.034;
+}
+
+uint32_t test_sensor_us100(void) {
+	uint32_t local_time = 0;
+
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_RESET); // pull the TRIG pin HIGH
+	DWT_Delay_us(2);  // wait for 2 us
+
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_SET); // pull the TRIG pin HIGH
+	DWT_Delay_us(10);  // wait for 10 us
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15, GPIO_PIN_RESET); // pull the TRIG pin low
+
+	// read the time for which the pin is high
+
+	while (!(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_12)))
+		;  // wait for the ECHO pin to go high
+	while (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_12))    // while the pin is high
+	{
+		local_time++;   // measure time for which the pin is high
+		DWT_Delay_us(1);
+	}
+	return local_time * 0.034;
+}
+uint32_t test_sensor_us42v2(void) {
+	uint32_t local_time = 0;
+
+//	HAL_GPIO_WritePin(GPIOD, GPIO_PIN_2, GPIO_PIN_RESET); // pull the TRIG pin HIGH
+//	DWT_Delay_us(2);  // wait for 2 us
+
+	HAL_GPIO_WritePin(GPIOD, GPIO_PIN_2, GPIO_PIN_SET); // pull the TRIG pin HIGH
+	DWT_Delay_us(10);  // wait for 10 us
+	HAL_GPIO_WritePin(GPIOD, GPIO_PIN_2, GPIO_PIN_RESET); // pull the TRIG pin low
+
+	// read the time for which the pin is high
+
+	while (!(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13)))
+		;  // wait for the ECHO pin to go high
+	while (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13))    // while the pin is high
+	{
+		local_time++;   // measure time for which the pin is high
+		DWT_Delay_us(1);
+	}
+	return local_time * 0.034;
+}
+
+//uint32_t OnMeasureTimerEvent(void *context) {
+//	uint32_t range;
+//	uint8_t range_array[2] = { 0, 0 };
+//	uint8_t cmd = RangeCommand;
+//	HAL_I2C_Master_Transmit(&hi2c3, SensorAddress, &cmd, 2, 0xFF);
+//	HAL_Delay(100);
+//	HAL_I2C_Master_Receive(&hi2c3, SensorAddress, &range_array, 2, 0xFF);
+////	I2cReadBuffer(&hi2c3, SensorAddress, 0x00, range_array, 2);
+//	range = (range_array[0] << 8) | range_array[1];
+//	printf("distance = %d cm\r\n", range);
+//
+//	return range;
+//}
+
+uint32_t OnMeasureTimerEvent(void *context) {
+	uint32_t range;
+	uint8_t range_array[2] = { 0, 0 };
+	uint8_t cmd = RangeCommand;
+	I2cWrite(&hi2c3, SensorAddress, 0x00, cmd);
+	HAL_Delay(100);
+	I2cReadBuffer(&hi2c3, SensorAddress, 0x00, range_array, 2);
+	range = (range_array[0] << 8) | range_array[1];
+	return range;
 }
 
 /* USER CODE END 4 */
